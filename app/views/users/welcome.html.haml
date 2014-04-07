@@ -1,0 +1,5 @@
+- if current_user
+  %h3.page-header Configure Layout
+  = render 'settings'
+- else
+  = render '/user_sessions/new'

@@ -1,0 +1,14 @@
+.row
+  .col-md-4
+    = form_for @user do |f|
+      .form-group
+        = f.label :email, class: 'control-label'
+        = f.text_field :email, class: 'form-control', required: ''
+      .form-group
+        = f.label :password, class: 'control-label'
+        = f.password_field :password, class: 'form-control', required: ''
+      .form-group
+        = f.label :password_confirmation, class: 'control-label'
+        = f.password_field :password_confirmation, class: 'form-control', required: ''
+      .form-group
+        = f.submit "#{@user.new_record? ? 'Sign up' : 'Save changes'}", class: 'btn btn-success'

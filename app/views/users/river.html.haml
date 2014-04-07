@@ -1,0 +1,6 @@
+- unless @river.blank?
+  %div
+    - @river.each do |item|
+      = render partial: 'news_box', locals: {url: item['url'], header: item['header'], published_at: item['published_at'], summary: item['summary'], image_url: item['image_thumbnail_medium']}
+- else
+  No content configured

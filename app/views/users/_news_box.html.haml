@@ -1,0 +1,7 @@
+.news-container#news-box{style: "position:absolute;background-color:#{@user.box_color} !important; border: 5px solid #{@user.border_color};", 'data-published-at' => published_at}
+  = link_to url, target: '_blank' do
+    .grid-image= image_tag image_url
+  .text{style:"color:#{@user.font_color};font-family:'#{@user.font_name}' !important;"}
+    %h4= link_to header, url, {target: '_blank', style:"font-size:#{@user.font_size+5}px;font-family:'#{@user.font_name}' !important;color:#{@user.font_color};"}
+    %p{style:"font-size:0.8em;color:#aaa;"}= "Released at #{Time.at(published_at.to_i/1000).to_formatted_s(:short)}"
+    %p{style:"font-size:#{@user.font_size}px !important;"}= summary

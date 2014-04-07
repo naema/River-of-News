@@ -1,0 +1,42 @@
+.row
+  .col-sm-5.col-md-3.hidden-xs
+    - url = '#'
+    - summary = 'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua at vero eos et.'
+    - header = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.'
+    - published_at = '1379617600'
+    - image_url = '/assets/river.jpg'
+    = render partial: 'news_box', locals: {url: url, header: header, published_at: published_at, summary: summary, image_url: image_url}
+  .col-sm-7.col-md-8{style: 'margin-top:20px;'}
+    = form_for @user, html: {class: 'form-horizontal'} do |f|
+      - if @user.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@user.errors.count, "error")
+            prohibited this user from being saved:
+          %ul
+            - @user.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = f.label :font_name, class: 'control-label col-md-2'
+        .col-md-2= f.select :font_name, ['']+(@google_fonts+User::DEFAULT_FONTS).sort, html_options: {id: 'font-select', class: 'form-control'}
+      .form-group
+        = f.label :font_size, class: 'control-label col-md-2'
+        .col-md-2= f.number_field :font_size, class: 'form-control'
+      .form-group
+        = f.label :font_color, class: 'control-label col-md-2'
+        .col-md-2= f.color_field :font_color, class: 'form-control'
+      .form-group
+        = f.label :box_color, class: 'control-label col-md-2'
+        .col-md-2= f.color_field :box_color, class: 'form-control'
+      .form-group
+        = f.label :border_color, class: 'control-label col-md-2'
+        .col-md-2= f.color_field :border_color, class: 'form-control'
+      .form-group
+        = f.label :api_url, class: 'control-label col-md-2'
+        .col-md-8= f.text_field :api_url, class: 'form-control', required: ''
+      .form-group
+        .col-md-offset-2.col-md-2= f.submit 'Save changes', class: 'btn btn-success'
+    %br
+    .col-md-offset-2= label_tag 'To integrate the River of News into your website, insert the following iframe into your html code:'
+    .col-md-offset-2
+      = text_area_tag '', "<iframe src=#{river_user_url(@user)} width=640 height=800></iframe>", class: 'form-control'

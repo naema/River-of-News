@@ -1,0 +1,15 @@
+!!! 5
+%html
+  %head
+    %title RiverOfNews
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    %meta{content:'width=device-width, initial-scale=1.0', name:'viewport'}
+    %meta{charset:'utf-8', content:'text/html', :'http-equiv' => 'Content-Type'}
+    - if @user &&  !User::DEFAULT_FONTS.include?(@user.font_name)
+      %link{href: "http://fonts.googleapis.com/css?family=#{@user.font_name.split.join('+')}", rel: 'stylesheet', type: 'text/css'}
+    %link{rel:"stylesheet", href:"//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"}
+    = csrf_meta_tags
+  %body
+    #river-news-container
+      = yield

@@ -1,0 +1,43 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#river-news-container {
+
+  .text { margin: 5px; }
+
+  h3 {
+    line-height: 1.2;
+    font-size: 16px;
+  }
+
+  h3 a, h4 a {
+    text-decoration: none;
+    color: #111;
+  }
+
+  h3 a:hover, h4 a:hover{
+    text-decoration: underline !important;
+    color: #666 !important;
+  }
+}
+
+.news-container {
+  position: absolute;
+  width: 220px;
+  margin: 20px;
+  overflow: hidden;
+  border: solid 5px #ececec;
+  border-radius: 3px;
+  word-wrap: break-word;
+}
+
+.grid-image img{
+  width: 210px;
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+iframe {
+  padding: 0;
+}
